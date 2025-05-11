@@ -19,17 +19,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast();
   
   const login = (username: string, password: string): boolean => {
-    const user = users.find(u => u.username === username && u.password === password);
+    console.log("Login attempt:", username, password);
+    console.log("Available users:", users);
+    
+    const user = users.find(u => 
+      u.username.toLowerCase() === username.toLowerCase() && 
+      u.password === password
+    );
     
     if (user) {
+      console.log("Login successful for user:", user);
       setCurrentUser(user);
       toast({
         title: "Login successful",
         description: `Welcome ${user.username}!`,
-        variant: "default",
       });
       return true;
     } else {
+      console.log("Login failed: No matching user found");
       toast({
         title: "Login failed",
         description: "Invalid username or password",
