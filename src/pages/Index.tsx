@@ -18,11 +18,13 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/login">
               <Button size="lg" className="bg-white text-vote-purple hover:bg-gray-100">
+                <Vote size={20} className="mr-2" />
                 Login to Vote
               </Button>
             </Link>
-            <Link to="/login">
+            <Link to="/admin-login">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-vote-purple">
+                <Shield size={20} className="mr-2" />
                 Admin Access
               </Button>
             </Link>
@@ -94,11 +96,18 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Join our secure voting platform to make your voice heard
           </p>
-          <Link to="/login">
-            <Button size="lg" className="bg-white text-vote-purple hover:bg-gray-100">
-              Get Started Now
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/login">
+              <Button size="lg" className="bg-white text-vote-purple hover:bg-gray-100">
+                Login to Vote
+              </Button>
+            </Link>
+            <Link to="/admin-login">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-vote-purple">
+                Admin Access
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 

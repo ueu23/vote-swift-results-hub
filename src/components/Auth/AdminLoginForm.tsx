@@ -6,10 +6,10 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { LogIn, Vote } from 'lucide-react';
+import { LogIn, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const LoginForm = () => {
+const AdminLoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -26,21 +26,21 @@ const LoginForm = () => {
       setIsLoading(false);
       
       if (success) {
-        navigate('/dashboard');
+        navigate('/admin-dashboard');
       }
     }, 1000);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-vote-blue-lighter">
-      <Card className="w-full max-w-md shadow-lg border-vote-purple-light">
+    <div className="flex items-center justify-center min-h-screen bg-vote-purple-light">
+      <Card className="w-full max-w-md shadow-lg border-vote-purple">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center">
-            <Vote size={48} className="text-vote-purple" />
+            <Shield size={48} className="text-vote-purple" />
           </div>
-          <CardTitle className="text-3xl font-bold text-vote-purple">Login to Vote</CardTitle>
+          <CardTitle className="text-3xl font-bold text-vote-purple">Admin Login</CardTitle>
           <CardDescription>
-            Enter your voter credentials to access the voting system
+            Secure access for election administrators only
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
@@ -49,7 +49,7 @@ const LoginForm = () => {
               <Label htmlFor="username">Username</Label>
               <Input
                 id="username"
-                placeholder="Enter your username"
+                placeholder="Enter admin username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -69,7 +69,7 @@ const LoginForm = () => {
               />
             </div>
             <div className="text-sm text-gray-500">
-              <p>Voter login: username: "voter1" / password: "voter123"</p>
+              <p>Admin login: username: "admin" / password: "admin123"</p>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
@@ -100,13 +100,13 @@ const LoginForm = () => {
               ) : (
                 <span className="flex items-center gap-2">
                   <LogIn size={18} />
-                  Login to Vote
+                  Admin Login
                 </span>
               )}
             </Button>
             <div className="text-center text-sm">
-              <Link to="/admin-login" className="text-vote-purple hover:underline">
-                Admin Access
+              <Link to="/login" className="text-vote-purple hover:underline">
+                Login as Voter
               </Link>
             </div>
           </CardFooter>
@@ -116,4 +116,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default AdminLoginForm;
